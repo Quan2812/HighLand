@@ -1,0 +1,17 @@
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\BL\obj\Debug\net5.0\BL.csproj.AssemblyReference.cache
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\BL\obj\Debug\net5.0\BL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\BL\obj\Debug\net5.0\BL.AssemblyInfoInputs.cache
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\BL\obj\Debug\net5.0\BL.AssemblyInfo.cs
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\BL\obj\Debug\net5.0\BL.csproj.CoreCompileInputs.cache
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\BL\bin\Debug\net5.0\BL.deps.json
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\BL\bin\Debug\net5.0\BL.dll
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\BL\bin\Debug\net5.0\ref\BL.dll
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\BL\bin\Debug\net5.0\BL.pdb
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\BL\bin\Debug\net5.0\DAL.dll
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\BL\bin\Debug\net5.0\Persistance.dll
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\BL\bin\Debug\net5.0\DAL.pdb
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\BL\bin\Debug\net5.0\Persistance.pdb
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\BL\obj\Debug\net5.0\BL.csproj.CopyComplete
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\BL\obj\Debug\net5.0\BL.dll
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\BL\obj\Debug\net5.0\ref\BL.dll
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\BL\obj\Debug\net5.0\BL.pdb

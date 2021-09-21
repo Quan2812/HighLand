@@ -1,0 +1,5 @@
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\DAL\obj\Debug\netstandard2.0\DAL.csproj.AssemblyReference.cache
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\DAL\obj\Debug\netstandard2.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\DAL\obj\Debug\netstandard2.0\DAL.AssemblyInfoInputs.cache
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\DAL\obj\Debug\netstandard2.0\DAL.AssemblyInfo.cs
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHightLand\DAL\obj\Debug\netstandard2.0\DAL.csproj.CoreCompileInputs.cache
