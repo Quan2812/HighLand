@@ -55,44 +55,35 @@ namespace DAL
             return listdrink;
         }
 
-        public List<Drink> GetDrinkById(int drinkId)
+        public Drink GetDrinkById(int drinkId)
         {
-            List<Drink> listdrink = null;
-            lock(connection){
-            try{
-                connection.Open();
-                MySqlCommand command = connection.CreateCommand();
-                command.CommandText = @"select d.drink_id, d.drink_name, s.size_id, s.size_name, ds.price 
-                                        from drinks d inner join drink_sizes ds 
-                                        on d.drink_id = ds.drink_id 
-                                        inner join sizes s 
-                                        on s.size_id = ds.size_id
-                                        where d.drink_id = " + drinkId +" and is_active = true;;";
-                MySqlDataReader reader = command.ExecuteReader();
-                while(reader.Read())
+            Drink drink = null;
+            lock(connection)
+            {
+                try
                 {
-                    Drink drink = new Drink();
-                    drink.DrinkId = reader.GetInt32("drink_id");
-                    drink.DrinkName = reader.GetString("drink_name");
-                    drink.IsActive = true;
-                    Size size = new Size();
-                    size.SizeId = reader.GetInt32("size_id");
-                    size.SizeName = reader.GetString("size_name");
-                    size.Price = reader.GetDouble("price");
-                    drink.SizeList.Add(size);
+                    connection.Open();
+                    MySqlCommand command = connection.CreateCommand();
+                    command.CommandText = @"select drink_id, drink_name, is_active from drinks
+                                            where drink_id = " + drinkId +" and is_active = true;";
+                    MySqlDataReader reader = command.ExecuteReader();
+                    if(reader.Read())
+                    {
+                        drink = new Drink();
+                        drink.DrinkId = reader.GetInt32("drink_id");
+                        drink.DrinkName = reader.GetString("drink_name");
+                        drink.IsActive = true;
+                    }
+                    reader.Close();
+                    connection.Close();
                 }
-                reader.Close();
-                connection.Close();
-            }catch
-            {
-                
-            }
-            finally
-            {
-                connection.Close();
-            }
-            }
-            return listdrink;
+                catch{}
+                finally
+                {
+                    connection.Close();
+                }
+                }
+            return drink;
         } 
     }
 }

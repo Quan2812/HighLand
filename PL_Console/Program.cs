@@ -11,7 +11,7 @@ namespace ConsoleApp
         {   
             Console.OutputEncoding = System.Text.Encoding.Unicode;
             Console.InputEncoding = System.Text.Encoding.Unicode;
-            int drinkID;
+            int drinkId;
             StaffBl bl = new StaffBl();
             Console.Write("User Name: ");
             string userName = Console.ReadLine();
@@ -37,14 +37,22 @@ namespace ConsoleApp
                             Console.WriteLine(drink.DrinkId +" " +drink.DrinkName );
                         }
                         Console.Write("Mời bạn nhập mã đồ uống: ");
-                        drinkID = Convert.ToInt32(Console.ReadLine());
-                        // SizeBL sizeBL = new SizeBL();
-                        // Size size = sizeBL.GetSizeById(drinkID);
-                        List<Drink> listdrink1s = drinkBL.GetDrinkById(drinkID);
-                        foreach (Drink drink1s in listdrink1s)
+                        drinkId = Convert.ToInt32(Console.ReadLine());
+                        SizeBL sizeBL = new SizeBL();
+                        List<Size> listsize = sizeBL.GetSizeById(drinkId);
+                        Drink drink1 = drinkBL.GetDrinkById(drinkId);
+                        if (drink1 != null) 
                         {
-                            Console.WriteLine(drink1s.DrinkId + " " + drink1s.DrinkName);
-                        }                        
+                            Console.Write(drink1.DrinkId + " " + drink1.DrinkName + "      ");
+                            foreach (Size size in listsize)
+                            {
+                                Console.Write(size.SizeName + ":" + size.Price + "      ");
+                            } 
+                        }
+                        OrderBL orderBL = new OrderBL();
+                        Order order = orderBL.CreateOrder(drinkId);
+                        Console.WriteLine(order.OrderDrink.DrinkName);
+
                         Pause();
                         break;
 

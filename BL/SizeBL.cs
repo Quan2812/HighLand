@@ -9,9 +9,9 @@ namespace BL
     {
         private SizeDAL sizeDAL = new SizeDAL();
 
-        public Size GetSizeById(int drinkID)
+        public List<Size> GetSizeById(int drinkId)
         {
-            return sizeDAL.GetSizeByID(drinkID);
+            return sizeDAL.GetSizeByID(drinkId);
         }
     }
 }

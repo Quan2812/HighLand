@@ -13,7 +13,8 @@ namespace DAL
         // 1: ok
         // -1: can't connect to db or error
         private MySqlConnection connection = DbHelper.GetConnection();
-        public Staff Login(string userName, string password){
+        public Staff Login(string userName, string password)
+        {
             Staff staff = null;
             lock(connection){
             try{

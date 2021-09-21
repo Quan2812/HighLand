@@ -12,7 +12,7 @@ namespace BL
             return drinkDAL.GetDrinks();
         } 
 
-        public List<Drink> GetDrinkById(int drinkID)
+        public Drink GetDrinkById(int drinkID)
         {
             return drinkDAL.GetDrinkById(drinkID);
         }
