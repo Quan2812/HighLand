@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using BL;
 using Persistance;
 
+
+
 namespace ConsoleApp
 {
-    class Program
+    public class Program
     {   
         static void Main(string[] args)
         {   
             Console.OutputEncoding = System.Text.Encoding.Unicode;
             Console.InputEncoding = System.Text.Encoding.Unicode;
-            int drinkId;
             StaffBl bl = new StaffBl();
             Console.Write("User Name: ");
             string userName = Console.ReadLine();
@@ -34,25 +35,49 @@ namespace ConsoleApp
                         List<Drink> listdrinks = drinkBL.GetDrinks();
                         foreach (Drink drink in listdrinks)
                         {
-                            Console.WriteLine(drink.DrinkId +" " +drink.DrinkName );
-                        }
-                        Console.Write("Mời bạn nhập mã đồ uống: ");
-                        drinkId = Convert.ToInt32(Console.ReadLine());
-                        SizeBL sizeBL = new SizeBL();
-                        List<Size> listsize = sizeBL.GetSizeById(drinkId);
-                        Drink drink1 = drinkBL.GetDrinkById(drinkId);
-                        if (drink1 != null) 
-                        {
-                            Console.Write(drink1.DrinkId + " " + drink1.DrinkName + "      ");
-                            foreach (Size size in listsize)
+                            Console.Write(drink.DrinkId +" " +drink.DrinkName + " ");
+                            foreach (Size size in drink.SizeList)
                             {
-                                Console.Write(size.SizeName + ":" + size.Price + "      ");
-                            } 
+                                Console.Write(size.SizeName + ":" + size.Price + " ");
+                            }
+                            Console.WriteLine("");
                         }
-                        OrderBL orderBL = new OrderBL();
-                        Order order = orderBL.CreateOrder(drinkId);
-                        Console.WriteLine(order.OrderDrink.DrinkName);
-
+                        CardBL cardBL = new CardBL();
+                        List<Card> listcards = cardBL.GetAllCard();
+                        Console.Write("Nhập mã đồ uống: ");
+                        int drinkId = Convert.ToInt32(Console.ReadLine());
+                        if (CheckDrinkForId(listdrinks,drinkId) == true)
+                        {   
+                            drinkId = drinkId - 1; 
+                            Console.Write(listdrinks[drinkId].DrinkId + " " + listdrinks[drinkId].DrinkName + "    ");
+                            foreach (Size size in listdrinks[drinkId].SizeList)
+                            {
+                                Console.Write(size.SizeName + ":" + size.Price + "    ");
+                            }
+                            Console.Write( "\nMời bạn chọn size: ");
+                            string sizechoose = Console.ReadLine();
+                            if (CheckSize(listdrinks,sizechoose,drinkId) == true)
+                            {
+                                Console.WriteLine("Bạn đã nhập đúng");
+                                OrderBL orderBL = new OrderBL();
+                                Order order = new Order();
+                                order.OrderDrinks.Add(listdrinks[drinkId]);
+                                order.OrderId = 1;
+                                order.OrderDate = DateTime.Now.ToString();
+                                order.Status = true;
+                                order.OrderCard = listcards[0];
+                                order.OrderStaff = staff;
+                                Console.WriteLine(order.OrderDate);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Bạn đã nhập sai");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Không có đồ uống tương ứng với mã Id đã nhập");
+                        }
                         Pause();
                         break;
 
@@ -108,6 +133,49 @@ namespace ConsoleApp
         {
             Console.Write("Ấn một phím bất kì để tiếp tục:");
             Console.ReadLine();
+        }
+
+        static bool CheckDrinkForId(List<Drink> listdrinks, int drinkId)
+        {   
+            foreach (Drink drink in listdrinks)
+            {
+                if (drinkId == drink.DrinkId)
+                {   
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        static bool CheckSize(List<Drink> listdrinks, string sizechoose, int drinkId)
+        {
+            foreach (Size size in listdrinks[drinkId].SizeList)
+            {
+                if (sizechoose == size.SizeName)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        static bool CheckCardById(List<Card> listcards, int cardId)
+        {
+            foreach (Card card in listcards)
+            {
+                if (cardId == card.CardId)
+                {
+                    if (listcards[cardId].Stat == 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

@@ -11,10 +11,5 @@ namespace BL
         {
             return drinkDAL.GetDrinks();
         } 
-
-        public Drink GetDrinkById(int drinkID)
-        {
-            return drinkDAL.GetDrinkById(drinkID);
-        }
     }
 }

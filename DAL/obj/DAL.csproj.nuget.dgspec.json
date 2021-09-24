@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHightLand\\DAL\\DAL.csproj": {}
+    "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\DAL\\DAL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHightLand\\DAL\\DAL.csproj": {
+    "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHightLand\\DAL\\DAL.csproj",
+        "projectUniqueName": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHightLand\\DAL\\DAL.csproj",
+        "projectPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\DAL\\DAL.csproj",
         "packagesPath": "C:\\Users\\Quan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHightLand\\DAL\\obj\\",
+        "outputPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Quan\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,8 +26,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHightLand\\Persistance\\Persistance.csproj": {
-                "projectPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHightLand\\Persistance\\Persistance.csproj"
+              "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\Persistance\\Persistance.csproj": {
+                "projectPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\Persistance\\Persistance.csproj"
               }
             }
           }
@@ -66,14 +66,14 @@
         }
       }
     },
-    "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHightLand\\Persistance\\Persistance.csproj": {
+    "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\Persistance\\Persistance.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHightLand\\Persistance\\Persistance.csproj",
+        "projectUniqueName": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\Persistance\\Persistance.csproj",
         "projectName": "Persistance",
-        "projectPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHightLand\\Persistance\\Persistance.csproj",
+        "projectPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\Persistance\\Persistance.csproj",
         "packagesPath": "C:\\Users\\Quan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHightLand\\Persistance\\obj\\",
+        "outputPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\Persistance\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Quan\\AppData\\Roaming\\NuGet\\NuGet.Config"
