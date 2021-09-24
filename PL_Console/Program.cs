@@ -56,18 +56,22 @@ namespace ConsoleApp
                             }
                             Console.Write( "\nMời bạn chọn size: ");
                             string sizechoose = Console.ReadLine();
-                            if (CheckSize(listdrinks,sizechoose,drinkId) == true)
-                            {
-                                Console.WriteLine("Bạn đã nhập đúng");
-                                OrderBL orderBL = new OrderBL();
-                                Order order = new Order();
-                                order.OrderDrinks.Add(listdrinks[drinkId]);
-                                order.OrderId = 1;
-                                order.OrderDate = DateTime.Now.ToString();
-                                order.Status = true;
-                                order.OrderCard = listcards[0];
-                                order.OrderStaff = staff;
-                                Console.WriteLine(order.OrderDate);
+                            if ((CheckSize(listdrinks,sizechoose,drinkId) == 0) || (CheckSize(listdrinks,sizechoose,drinkId) == 1) || (CheckSize(listdrinks,sizechoose,drinkId) == 2))
+                            {   
+                                int i = CheckSize(listdrinks,sizechoose,drinkId);
+                                // Console.WriteLine("Bạn đã nhập đúng");
+                                // OrderBL orderBL = new OrderBL();
+                                // Order order = new Order();
+                                // Size size1 = new Size();
+                                // size1 = listdrinks[drinkId].SizeList[i];
+                                // Drink drink1 = new Drink();
+                                // drink1 = listdrinks[drinkId];
+                                // drink1.SizeList.Add(size1);
+                                // order.OrderDrinks.Add(drink1);
+                                // order.OrderDate = DateTime.Now.ToString();
+                                // order.Status = false;
+                                // order.OrderCard = listcards[0];
+                                // order.OrderStaff = staff;
                             }
                             else
                             {
@@ -147,16 +151,27 @@ namespace ConsoleApp
             return false;
         }
 
-        static bool CheckSize(List<Drink> listdrinks, string sizechoose, int drinkId)
+        static int CheckSize(List<Drink> listdrinks, string sizechoose, int drinkId)
         {
             foreach (Size size in listdrinks[drinkId].SizeList)
             {
                 if (sizechoose == size.SizeName)
                 {
-                    return true;
+                    if (size.SizeName == "S")
+                    {
+                        return 0;
+                    }
+                    if (size.SizeName == "M")
+                    {
+                        return 1;
+                    }
+                    if (size.SizeName == "L")
+                    {
+                        return 2;
+                    }
                 }
             }
-            return false;
+            return 3;
         }
 
         static bool CheckCardById(List<Card> listcards, int cardId)

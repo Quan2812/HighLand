@@ -10,6 +10,6 @@ namespace Persistance
         
         public double Price {set;get;}
 
-        public int Quantity {set;get;}
+        public int Quantity {set;get;} = 1;
     }
 }
