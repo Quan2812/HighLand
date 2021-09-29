@@ -3,7 +3,7 @@ using Xunit;
 using DAL;
 using Persistance;
 
-namespace LoginDalTest
+namespace DALTest
 {
     public class StaffDalTest
     {
