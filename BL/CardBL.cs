@@ -13,5 +13,10 @@ namespace BL
         {
             return cardDAL.GetAllCard();
         }
+
+        public void UpdateCard(int cardId)
+        {
+            cardDAL.UpdateCards(cardId);
+        }
     }
 }

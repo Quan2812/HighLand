@@ -12,7 +12,7 @@ namespace DAL
         public List<Card> GetAllCard()
         {
             List<Card> cards = new List<Card>();
-            lock(connection)
+            lock (connection)
             {
                 try
                 {
@@ -29,11 +29,11 @@ namespace DAL
                     }
                     reader.Close();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex);
                 }
-                
+
                 finally
                 {
                     connection.Close();
@@ -41,6 +41,31 @@ namespace DAL
             }
 
             return cards;
+        }
+        public void UpdateCards(int cardId)
+        {   
+            
+            lock (connection)
+            {
+                try
+                {
+                    connection.Open();
+                    MySqlCommand command = connection.CreateCommand();
+                    command.CommandText = @"UPDATE Cards
+                                            SET stat = true
+                                            WHERE card_id = "+ cardId +"; ";
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+
+                finally
+                {
+                    connection.Close();
+                }
+            }
         }
     }
 }

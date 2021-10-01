@@ -10,7 +10,7 @@ namespace Persistance
         public Staff OrderStaff {set;get;} = new Staff();
         public Card OrderCard {set;get;} = new Card();
         public List<Drink> OrderDrinks {set;get;} = new List<Drink>();
-        public bool Status {set;get;}
+        public bool Status {set;get;} = true;
     }
 
     // public class DateTime

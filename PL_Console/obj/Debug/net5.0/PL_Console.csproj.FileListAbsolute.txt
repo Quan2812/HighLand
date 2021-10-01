@@ -82,3 +82,4 @@ C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHighLand\PL_Console\obj\Debug\net5.0
 C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHighLand\PL_Console\obj\Debug\net5.0\ref\PL_Console.dll
 C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHighLand\PL_Console\obj\Debug\net5.0\PL_Console.pdb
 C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHighLand\PL_Console\obj\Debug\net5.0\PL_Console.genruntimeconfig.cache
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHighLand\PL_Console\bin\Debug\net5.0\ConsoleTables.dll

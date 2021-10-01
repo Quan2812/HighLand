@@ -11,7 +11,8 @@ namespace BL
 
         public bool CreateOrder(Order order)
         {
-            return orderDAL.CreateOrder(order);
+            bool result = orderDAL.CreateOrder(order);
+            return result;
         }
     }
 }
