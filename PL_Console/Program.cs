@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using BL;
 using Persistance;
-
+using ConsoleTables;
 
 
 namespace ConsoleApp
@@ -171,6 +171,7 @@ namespace ConsoleApp
 
         static string[] mainMenu = { "1. Order", "2. Xem danh sách Order", "0. Thoát" };
         static string[] subMenu1 = { "1. Tạo mới Order", "0. Quay lại menu chính" };
+        static string[] subMenu2 = {"1.Danh sách Order", "0.Quay lại menu chính"};
 
         static void DisplayMenu(string[] menu)
         {
@@ -226,24 +227,23 @@ namespace ConsoleApp
                         do
                         {
                             Console.Clear();
-                            Console.WriteLine("Danh sách đồ uống");
+                            // Console.WriteLine("Danh sách đồ uống");
                             DrinkBL drinkBL = new DrinkBL();
                             List<Drink> listdrinks = drinkBL.GetDrinks();
+                            var table = new ConsoleTable("ID", "Tên đồ uống");
                             foreach (Drink drink in listdrinks)
                             {
-                                Console.Write(drink.DrinkId + " " + drink.DrinkName + " ");
-                                foreach (Size size in drink.SizeList)
-                                {
-                                    Console.Write(size.SizeName + ":" + size.Price + " ");
-                                }
-                                Console.WriteLine("");
+                                // Console.Write(drink.DrinkId + " " + drink.DrinkName + " ");
+                                table.AddRow(drink.DrinkId, drink.DrinkName);
                             }
+                            table.Write();
                             do
                             {
                                 Console.Write("Nhập mã đồ uống: ");
                                 int drinkId = Convert.ToInt32(Console.ReadLine());
                                 if (CheckDrinkForId(listdrinks, drinkId) == true)
-                                {
+                                {   
+                                    Console.Clear();
                                     d = drinkId - 1;
                                     Console.Write(listdrinks[d].DrinkId + " " + listdrinks[d].DrinkName + "    ");
                                     foreach (Size size in listdrinks[d].SizeList)
@@ -333,10 +333,13 @@ namespace ConsoleApp
                         {
                             CardBL cardBL = new CardBL();
                             List<Card> listcards = cardBL.GetAllCard();
+                            var table1 = new ConsoleTable("ID thẻ", "Trạng thái");
                             foreach (Card card in listcards)
                             {
-                                Console.Write(card.CardId + "  ");
+                                // Console.Write(card.CardId + "  ");
+                                table1.AddRow(card.CardId, card.Stat);
                             }
+                            table1.Write();
                             Console.Write("Mời bạn nhập mã thẻ: ");
                             int cardId = Convert.ToInt32(Console.ReadLine());
                             if (CheckCardById(listcards, cardId) == true)
@@ -346,8 +349,7 @@ namespace ConsoleApp
                                 order.OrderCard = listcards[ca];
                                 order.OrderStaff = staff;
                                 Console.WriteLine("Create Order: " + (orderBL.CreateOrder(order) ? "completed!" : "not complete!"));
-                                Console.WriteLine((orderBL.CreateOrder(order)));
-                                if ((orderBL.CreateOrder(order) == true))
+                                if (order.OrderId != 0)
                                 {
                                     cardBL.UpdateCard(cardId);
                                 }
@@ -372,5 +374,10 @@ namespace ConsoleApp
                 }
             } while (choice != 0);
         }
+
+        // static void DisplaySubMenu2()
+        // {
+
+        // }
     }
 }

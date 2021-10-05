@@ -82,5 +82,12 @@ namespace DAL
             }
             return result;
         }
+
+        // public Order GetOrderById()
+        // {
+        //     Order order = null;
+
+        //     return order;
+        // }
     }
 }
