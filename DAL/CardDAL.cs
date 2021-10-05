@@ -42,7 +42,7 @@ namespace DAL
 
             return cards;
         }
-        public void UpdateCards(int cardId)
+        public void UpdateCards(int cardId, bool status)
         {   
             
             lock (connection)
@@ -52,8 +52,7 @@ namespace DAL
                     connection.Open();
                     MySqlCommand command = connection.CreateCommand();
                     command.CommandText = @"UPDATE Cards
-                                            SET stat = true
-                                            WHERE card_id = "+ cardId +"; ";
+                                            SET stat = "+ status +" WHERE card_id = "+ cardId +"; ";
                     command.ExecuteNonQuery();
                 }
                 catch (Exception ex)

@@ -14,5 +14,10 @@ namespace BL
             bool result = orderDAL.CreateOrder(order);
             return result;
         }
+
+        public List<Order> GetOrderToday()
+        {
+            return orderDAL.GetOrderToday();
+        }
     }
 }

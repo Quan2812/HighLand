@@ -6,7 +6,7 @@ namespace Persistance
     public class Order
     {
         public int OrderId {set;get;}
-        public string OrderDate {set;get;} 
+        public DateTime OrderDate {set;get;} 
         public Staff OrderStaff {set;get;} = new Staff();
         public Card OrderCard {set;get;} = new Card();
         public List<Drink> OrderDrinks {set;get;} = new List<Drink>();

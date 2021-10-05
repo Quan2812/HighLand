@@ -14,9 +14,9 @@ namespace BL
             return cardDAL.GetAllCard();
         }
 
-        public void UpdateCard(int cardId)
+        public void UpdateCard(int cardId, bool status)
         {
-            cardDAL.UpdateCards(cardId);
+            cardDAL.UpdateCards(cardId, status);
         }
     }
 }

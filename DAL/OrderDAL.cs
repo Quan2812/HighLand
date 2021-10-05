@@ -57,7 +57,7 @@ namespace DAL
                     result = true;
                 }
                 catch (Exception ex)
-                {   
+                {
                     Console.WriteLine(ex);
                     try
                     {
@@ -72,9 +72,9 @@ namespace DAL
                     command.ExecuteNonQuery();
                 }
             }
-            catch( Exception ex) 
-            { 
-                Console.WriteLine(ex); 
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
             }
             finally
             {
@@ -83,11 +83,39 @@ namespace DAL
             return result;
         }
 
-        // public Order GetOrderById()
-        // {
-        //     Order order = null;
-
-        //     return order;
-        // }
+        public List<Order> GetOrderToday()
+        {
+            List<Order> listorders = new List<Order>();
+            lock (connection)
+            {
+                try
+                {
+                    connection.Open();
+                    MySqlCommand command = connection.CreateCommand();
+                    command.CommandText = "select order_id, order_date, stat, staff_id, card_id from Orders where (day(order_date) - day(now())) = 0";
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        Order order = new Order();
+                        order.OrderId = reader.GetInt32("order_id");
+                        order.OrderDate = reader.GetDateTime("order_date");
+                        order.Status = reader.GetBoolean("stat");
+                        order.OrderCard.CardId = reader.GetInt32("card_id");
+                        order.OrderStaff.StaffId = reader.GetInt32("staff_id");
+                        listorders.Add(order);
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return listorders;
+        }
     }
 }

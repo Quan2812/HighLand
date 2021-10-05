@@ -16,7 +16,7 @@ namespace ConsoleApp
             StaffBl bl = new StaffBl();
             Staff staff = new Staff();
             do
-            {   
+            {
                 Console.Clear();
                 Console.WriteLine("LOGIN");
                 Console.Write("User Name: ");
@@ -171,7 +171,7 @@ namespace ConsoleApp
 
         static string[] mainMenu = { "1. Order", "2. Xem danh sách Order", "0. Thoát" };
         static string[] subMenu1 = { "1. Tạo mới Order", "0. Quay lại menu chính" };
-        static string[] subMenu2 = {"1.Danh sách Order", "0.Quay lại menu chính"};
+        static string[] subMenu2 = { "1.Danh sách Order", "2.Cập nhật trạng thái Order", "0.Quay lại menu chính" };
 
         static void DisplayMenu(string[] menu)
         {
@@ -196,6 +196,7 @@ namespace ConsoleApp
                         DisplaySubMenu1(staff);
                         break;
                     case 2:
+                        DisplaySubMenu2();
                         break;
                     case 0:
                         break;
@@ -242,7 +243,7 @@ namespace ConsoleApp
                                 Console.Write("Nhập mã đồ uống: ");
                                 int drinkId = Convert.ToInt32(Console.ReadLine());
                                 if (CheckDrinkForId(listdrinks, drinkId) == true)
-                                {   
+                                {
                                     Console.Clear();
                                     d = drinkId - 1;
                                     Console.Write(listdrinks[d].DrinkId + " " + listdrinks[d].DrinkName + "    ");
@@ -351,7 +352,7 @@ namespace ConsoleApp
                                 Console.WriteLine("Create Order: " + (orderBL.CreateOrder(order) ? "completed!" : "not complete!"));
                                 if (order.OrderId != 0)
                                 {
-                                    cardBL.UpdateCard(cardId);
+                                    cardBL.UpdateCard(cardId, order.Status);
                                 }
                                 break;
                             }
@@ -375,9 +376,45 @@ namespace ConsoleApp
             } while (choice != 0);
         }
 
-        // static void DisplaySubMenu2()
-        // {
+        static void DisplaySubMenu2()
+        {
+            int choice;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("===========================================");
+                Console.WriteLine("Danh sách Order\n");
+                DisplayMenu(subMenu2);
+                choice = InputChoice();
+                OrderBL orderBL = new OrderBL();
+                CardBL cardBL = new CardBL();
+                var table = new ConsoleTable("order_id", "order_date", "stat", "staff_id", "card_id");
+                switch (choice)
+                {
+                    case 1:
+                        Console.Clear();
+                        List<Order> listorders = orderBL.GetOrderToday();
+                        foreach (Order order in listorders)
+                        {
+                            table.AddRow(order.OrderId, order.OrderDate, order.Status, order.OrderStaff.StaffId, order.OrderCard.CardId);
+                        }
+                        Console.WriteLine("Danh sách Order ngày: " + DateTime.Now.ToShortDateString());
+                        table.Write();
+                        Pause();
+                        break;
+                    case 2:
+                        Console.WriteLine("Danh sách Order ngày: " + DateTime.Now.ToShortDateString());
+                        table.Write();
+                        Console.WriteLine("Mời bạn nhập mã Id của Order");
+                        int orderId = Convert.ToInt32(Console.ReadLine());
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        break;
+                }
+            } while (choice != 0);
 
-        // }
+        }
     }
 }
