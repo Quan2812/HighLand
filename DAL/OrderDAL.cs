@@ -118,12 +118,8 @@ namespace DAL
             return listorders;
         }
 
-        public bool UpdateOrderStatus(int orderId, List<Order> listorders)
+        public bool UpdateOrderStatus(int orderId)
         {
-            if (listorders.Count == 0)
-            {
-                return false;
-            }
             bool result = false;
             lock (connection)
             {
@@ -132,7 +128,7 @@ namespace DAL
                     connection.Open();
                     MySqlCommand command = connection.CreateCommand();
                     command.CommandText = @"UPDATE Orders
-                                            SET stat = false WHERE card_id = "+ orderId +"; ";
+                                            SET stat = false WHERE order_id = "+ orderId +"; ";
                     command.ExecuteNonQuery();
                     result = true;
                 }

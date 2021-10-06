@@ -297,7 +297,7 @@ namespace ConsoleApp
                                                         }
                                                     }
                                                 }
-                                                if(c == false)
+                                                if (c == false)
                                                 {
                                                     foreach (Drink drink in order.OrderDrinks)
                                                     {
@@ -326,7 +326,7 @@ namespace ConsoleApp
 
                         } while (choose == "Y");
                         while (true)
-                        {   
+                        {
                             Console.Clear();
                             CardBL cardBL = new CardBL();
                             List<Card> listcards = cardBL.GetAllCard();
@@ -371,7 +371,6 @@ namespace ConsoleApp
                 }
             } while (choice != 0);
         }
-
         static void DisplaySubMenu2()
         {
             int choice;
@@ -418,32 +417,55 @@ namespace ConsoleApp
                         }
                         else
                         {
+                            Console.Clear();
+                            Console.WriteLine("Danh sách Order ngày hôm nay(" + DateTime.Now.ToShortDateString() + ")");
+                            foreach (Order order in listorders)
+                            {
+                                table.AddRow(order.OrderId, order.OrderDate, order.Status, order.OrderStaff.StaffId, order.OrderCard.CardId);
+                            }
                             do
                             {
-                                Console.Clear();
-                                foreach (Order order in listorders)
-                                {
-                                    table.AddRow(order.OrderId, order.OrderDate, order.Status, order.OrderStaff.StaffId, order.OrderCard.CardId);
-                                }
-                                Console.WriteLine("Danh sách Order ngày hôm nay(" + DateTime.Now.ToShortDateString() + ")");
                                 table.Write();
                                 Console.WriteLine("Mời bạn nhập mã Id của Order");
                                 int orderId = Convert.ToInt32(Console.ReadLine());
                                 foreach (Order order in listorders)
                                 {
                                     if (orderId == order.OrderId)
-                                    {   
-                                        check = orderId;
-                                        Console.WriteLine("Update Order: " + (orderBL.UpdateOrderStatus(orderId, listorders) ? "completed!" : "not complete!"));
-                                        Pause();
-                                    }
-                                    else
                                     {
-                                        Console.WriteLine("Order với mã id: " + orderId + "chưa được tạo");
-                                        Pause();
+                                        if (order.Status == true)
+                                        {
+                                            check = orderId;
+                                        }
+                                        if (order.Status == false)
+                                        {
+                                            check = -2;
+                                        }
                                     }
                                 }
-                            } while (check == -1);
+                                if (check == orderId)
+                                {
+                                    Console.WriteLine("Update Order: " + (orderBL.UpdateOrderStatus(orderId) ? "completed!" : "not complete!"));
+                                    listorders = orderBL.GetOrderToday();
+                                    foreach (Order order in listorders)
+                                    {
+                                        if (orderId == order.OrderId)
+                                        {
+                                            cardBL.UpdateCard(order.OrderCard.CardId, order.Status);
+                                        }
+                                    }
+                                    Pause();
+                                }
+                                if (check == -1)
+                                {
+                                    Console.WriteLine("Order với mã Id: " + orderId + " chưa được tạo");
+                                    Pause();
+                                }
+                                if (check == -2)
+                                {
+                                    Console.WriteLine("Order với mã Id vừa nhập " + orderId + " đã được giao cho khách rồi");
+                                    Pause();
+                                }
+                            } while (check == -1 || check == -2);
 
                         }
 

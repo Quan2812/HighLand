@@ -20,9 +20,9 @@ namespace BL
             return orderDAL.GetOrderToday();
         }
 
-        public bool UpdateOrderStatus(int orderId, List<Order> listorders)
+        public bool UpdateOrderStatus(int orderId)
         {
-            bool result = orderDAL.UpdateOrderStatus(orderId, listorders);
+            bool result = orderDAL.UpdateOrderStatus(orderId);
             return result;
         }
     }
