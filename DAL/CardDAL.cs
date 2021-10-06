@@ -18,7 +18,7 @@ namespace DAL
                 {
                     connection.Open();
                     MySqlCommand command = connection.CreateCommand();
-                    command.CommandText = "select card_id, stat from cards where stat = 0";
+                    command.CommandText = "select card_id, stat from cards";
                     MySqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {

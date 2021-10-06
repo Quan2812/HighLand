@@ -87,14 +87,14 @@ namespace DAL
         {
             List<Order> listorders = new List<Order>();
             lock (connection)
-            {
+            {   
                 try
                 {
                     connection.Open();
                     MySqlCommand command = connection.CreateCommand();
                     command.CommandText = "select order_id, order_date, stat, staff_id, card_id from Orders where (day(order_date) - day(now())) = 0";
                     MySqlDataReader reader = command.ExecuteReader();
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         Order order = new Order();
                         order.OrderId = reader.GetInt32("order_id");
@@ -116,6 +116,37 @@ namespace DAL
                 }
             }
             return listorders;
+        }
+
+        public bool UpdateOrderStatus(int orderId, List<Order> listorders)
+        {
+            if (listorders.Count == 0)
+            {
+                return false;
+            }
+            bool result = false;
+            lock (connection)
+            {
+                try
+                {
+                    connection.Open();
+                    MySqlCommand command = connection.CreateCommand();
+                    command.CommandText = @"UPDATE Orders
+                                            SET stat = false WHERE card_id = "+ orderId +"; ";
+                    command.ExecuteNonQuery();
+                    result = true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return result;
         }
     }
 }
