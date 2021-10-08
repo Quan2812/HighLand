@@ -30,7 +30,7 @@ namespace DAL
                     staff.UserAccount = GetString(reader, 1);
                     staff.StaffName = GetString(reader, 2);
                     staff.StaffAddress = GetString(reader,3);
-                    staff.Role = reader.GetInt32("user_role");
+                    staff.Role = reader.GetInt32("role");
                     staff.IsActive = true;
                 }
                 reader.Close();

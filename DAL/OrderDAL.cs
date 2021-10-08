@@ -87,12 +87,14 @@ namespace DAL
         {
             List<Order> listorders = new List<Order>();
             lock (connection)
-            {   
+            {
                 try
                 {
                     connection.Open();
                     MySqlCommand command = connection.CreateCommand();
-                    command.CommandText = "select order_id, order_date, stat, staff_id, card_id from Orders where (day(order_date) - day(now())) = 0";
+                    command.CommandText = @"select order_id, order_date, stat, o.staff_id, card_id, s.staff_name
+                                            from Orders o inner join staffs s on s.staff_id = o.staff_id 
+                                            where (day(order_date) - day(now())) = 0;";
                     MySqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
@@ -101,10 +103,32 @@ namespace DAL
                         order.OrderDate = reader.GetDateTime("order_date");
                         order.Status = reader.GetBoolean("stat");
                         order.OrderCard.CardId = reader.GetInt32("card_id");
-                        order.OrderStaff.StaffId = reader.GetInt32("staff_id");
+                        order.OrderStaff.StaffName = reader.GetString("staff_name");
                         listorders.Add(order);
                     }
                     reader.Close();
+                    foreach (Order order in listorders)
+                    {
+                        command.CommandText = @"select order_id, d.drink_id, d.drink_name, s.size_id, s.size_name, quantity, ds.price from Order_details od
+                                                inner join Drinks d on d.drink_id = od.drink_id
+                                                inner join Sizes s on s.size_id = od.size_id
+                                                inner join Drink_Sizes ds on  ds.drink_id = od.drink_id and ds.size_id = od.size_id
+                                                where order_id = " + order.OrderId + ";";
+                        reader = command.ExecuteReader();
+                        while(reader.Read())
+                        {
+                            Drink drink = new Drink();
+                            drink.DrinkName = reader.GetString("drink_name");
+                            Size size = new Size();
+                            size.SizeName = reader.GetString("size_name");
+                            size.Quantity = reader.GetInt32("quantity");
+                            size.Price = reader.GetDouble("price");
+                            drink.SizeList.Add(size);
+                            order.OrderDrinks.Add(drink);
+                        }
+                        reader.Close();
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -128,7 +152,7 @@ namespace DAL
                     connection.Open();
                     MySqlCommand command = connection.CreateCommand();
                     command.CommandText = @"UPDATE Orders
-                                            SET stat = false WHERE order_id = "+ orderId +"; ";
+                                            SET stat = false WHERE order_id = " + orderId + "; ";
                     command.ExecuteNonQuery();
                     result = true;
                 }
