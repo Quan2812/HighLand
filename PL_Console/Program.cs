@@ -21,7 +21,7 @@ namespace ConsoleApp
                 Console.WriteLine("----------LOGIN----------");
                 Console.Write("User Name: ");
                 string userName = Console.ReadLine();
-                Console.Write("Password: "); 
+                Console.Write("Password: ");
                 string password = GetPassword();
                 Console.WriteLine();
                 staff = bl.Login(userName, password);
@@ -67,7 +67,7 @@ namespace ConsoleApp
             return choice;
         }
         static void Pause()
-        {   
+        {
             Console.WriteLine("Press any button to forward");
             Console.ReadKey();
         }
@@ -86,7 +86,7 @@ namespace ConsoleApp
         {
             foreach (Size size in listdrinks[drinkId].SizeList)
             {
-                if (sizechoose == size.SizeName)
+                if (sizechoose.ToUpper() == size.SizeName)
                 {
                     if (size.SizeName == "M" && listdrinks[drinkId].SizeList.Count == 2)
                     {
@@ -314,7 +314,7 @@ namespace ConsoleApp
                                 }
                             } while (d == -1);
 
-                        } while (choose == "Y");
+                        } while (choose.ToUpper() == "Y");
                         while (true)
                         {
                             Console.Clear();
@@ -426,7 +426,7 @@ namespace ConsoleApp
                             } while (check == -1);
                             Console.Write("Do you want to update this Order?(Y/N): ");
                             choose = Console.ReadLine();
-                            if (choose == "Y")
+                            if (choose.ToUpper() == "Y")
                             {
                                 Console.WriteLine("Update Order: " + (orderBL.UpdateOrderStatus(orderId) ? "completed!" : "not complete!"));
                                 foreach (Order order in listorders)
@@ -470,12 +470,12 @@ namespace ConsoleApp
             {
                 foreach (Size size in drink.SizeList)
                 {
-                    Console.WriteLine("|{0,-20}{1,-10}{2,-10}{3,8}|", drink.DrinkName, size.SizeName, size.Quantity, size.Price);
+                    Console.WriteLine("|{0,-20}{1,-10}{2,-10}{3,8}|", drink.DrinkName, size.SizeName, size.Quantity, size.Price.ToString("0,000"));
                     Console.WriteLine("+------------------------------------------------+");
                     total = total + Convert.ToDouble(size.Quantity) * size.Price;
                 }
             }
-            Console.WriteLine("|Totals: {0,40}|", total);
+            Console.WriteLine("|                         Totals:{0,16}|",total.ToString("0,000"));
             Console.WriteLine("+------------------------------------------------+");
             Console.WriteLine("|        ***Share your opinion with us***        |");
             Console.WriteLine("|https://www.facebook.com/highlandscoffeevietnam/|");
