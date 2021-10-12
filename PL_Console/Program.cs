@@ -324,7 +324,14 @@ namespace ConsoleApp
                             foreach (Card card in listcards)
                             {
                                 // Console.Write(card.CardId + "  ");
-                                table1.AddRow(card.CardId, card.Stat);
+                                if (card.Stat == 0)
+                                {
+                                    table1.AddRow(card.CardId, "Non Active");
+                                }
+                                else
+                                {
+                                    table1.AddRow(card.CardId, "Is Active");
+                                }
                             }
                             table1.Write(Format.Alternative);
                             Console.Write("Please enter your card number: ");
@@ -409,34 +416,30 @@ namespace ConsoleApp
                                     table.AddRow(order.OrderId, order.OrderDate, "Completed", order.OrderStaff.StaffName, order.OrderCard.CardId);
                                 }
                             }
+
                             Console.WriteLine("Today's Order List(" + DateTime.Now.ToShortDateString() + ")");
                             table.Write(Format.Alternative);
-                            Console.Write("Please enter your Order's Id code: ");
-                            int orderId = Convert.ToInt32(Console.ReadLine());
                             do
                             {
+                                Console.Write("Please enter your Order's Id code: ");
+                                int orderId = Convert.ToInt32(Console.ReadLine());
                                 foreach (Order order in listorders)
                                 {
-                                    if (orderId == order.OrderId)
+                                    if (orderId == order.OrderId && order.Status == true)
                                     {
                                         SubPrintInvoice(order);
                                         check = orderId;
+                                        Console.Write("Do you want to update this Order?(Y/N): ");
+                                        choose = Console.ReadLine();
+                                        if (choose.ToUpper() == "Y")
+                                        {
+                                            Console.WriteLine("Update Order: " + (orderBL.UpdateOrderStatus(orderId) ? "completed!" : "not complete!"));
+                                            cardBL.UpdateCard(order.OrderCard.CardId, order.Status);
+                                            break;
+                                        }
                                     }
                                 }
                             } while (check == -1);
-                            Console.Write("Do you want to update this Order?(Y/N): ");
-                            choose = Console.ReadLine();
-                            if (choose.ToUpper() == "Y")
-                            {
-                                Console.WriteLine("Update Order: " + (orderBL.UpdateOrderStatus(orderId) ? "completed!" : "not complete!"));
-                                foreach (Order order in listorders)
-                                {
-                                    if (orderId == order.OrderId)
-                                    {
-                                        cardBL.UpdateCard(order.OrderCard.CardId, order.Status);
-                                    }
-                                }
-                            }
                             Pause();
                         }
                         break;
@@ -475,7 +478,7 @@ namespace ConsoleApp
                     total = total + Convert.ToDouble(size.Quantity) * size.Price;
                 }
             }
-            Console.WriteLine("|                         Totals:{0,16}|",total.ToString("0,000"));
+            Console.WriteLine("|                         Totals:{0,16}|", total.ToString("0,000"));
             Console.WriteLine("+------------------------------------------------+");
             Console.WriteLine("|        ***Share your opinion with us***        |");
             Console.WriteLine("|https://www.facebook.com/highlandscoffeevietnam/|");

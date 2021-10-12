@@ -59,7 +59,6 @@ namespace DAL
                 {
                     Console.WriteLine(ex);
                 }
-
                 finally
                 {
                     connection.Close();
