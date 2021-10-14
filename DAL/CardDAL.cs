@@ -65,5 +65,25 @@ namespace DAL
                 }
             }
         }
+
+        public void UpdateAllCards()
+        {
+            try
+            {
+                connection.Open();
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = @"UPDATE Cards
+                                        SET stat = false";
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

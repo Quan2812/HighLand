@@ -18,5 +18,10 @@ namespace BL
         {
             cardDAL.UpdateCards(cardId, status);
         }
-    }
+
+        public void UpdateAllCards()
+        {
+            cardDAL.UpdateAllCards();
+        }
+    }   
 }

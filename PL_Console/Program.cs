@@ -19,6 +19,7 @@ namespace ConsoleApp
             {
                 Console.Clear();
                 Console.WriteLine("----------LOGIN----------");
+                Console.WriteLine("=========================");
                 Console.Write("User Name: ");
                 string userName = Console.ReadLine();
                 Console.Write("Password: ");
@@ -319,6 +320,10 @@ namespace ConsoleApp
                         {
                             Console.Clear();
                             CardBL cardBL = new CardBL();
+                            if (listorders.Count == 0)
+                            {
+                              cardBL.UpdateAllCards();  
+                            }
                             List<Card> listcards = cardBL.GetAllCard();
                             var table1 = new ConsoleTable("Card number", "Status");
                             foreach (Card card in listcards)
