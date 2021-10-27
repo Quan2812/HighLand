@@ -522,6 +522,7 @@ namespace ConsoleApp
             //     Console.Write("|ID:{0,4}|", drink.DrinkId);
             //     Console.WriteLine("Drink:{0,20}|", drink.DrinkName);
             // }
+            Header();
             int choice = -1;
             Console.WriteLine("+=========================+");
             Console.WriteLine("| ID |      DrinkName     |");
@@ -542,6 +543,7 @@ namespace ConsoleApp
                 {
                     case 1:
                         Console.Clear();
+                        Header();
                         Console.WriteLine("+=========================+");
                         Console.WriteLine("| ID |      DrinkName     |");
                         Console.WriteLine("+=========================+");
@@ -555,6 +557,7 @@ namespace ConsoleApp
                         break;
                     case 2:
                         Console.Clear();
+                        Header();
                         Console.WriteLine("+=========================+");
                         Console.WriteLine("| ID |      DrinkName     |");
                         Console.WriteLine("+=========================+");
@@ -568,6 +571,7 @@ namespace ConsoleApp
                         break;
                     case 3:
                         Console.Clear();
+                        Header();
                         Console.WriteLine("+=========================+");
                         Console.WriteLine("| ID |      DrinkName     |");
                         Console.WriteLine("+=========================+");
@@ -589,6 +593,7 @@ namespace ConsoleApp
         {
             int choice = -1;
             Console.Clear();
+            Header();
             Console.WriteLine("+=========================+");
             Console.WriteLine("| ID |        Status      |");
             Console.WriteLine("+=========================+");
@@ -617,6 +622,7 @@ namespace ConsoleApp
                 {
                     case 1:
                         Console.Clear();
+                        Header();
                         Console.WriteLine("+=========================+");
                         Console.WriteLine("| ID |        Status      |");
                         Console.WriteLine("+=========================+");
@@ -640,6 +646,7 @@ namespace ConsoleApp
                         break;
                     case 2:
                         Console.Clear();
+                        Header();
                         Console.WriteLine("+=========================+");
                         Console.WriteLine("| ID |        Status      |");
                         Console.WriteLine("+=========================+");
