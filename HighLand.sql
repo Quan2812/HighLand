@@ -20,21 +20,20 @@ create user if not exists 'vtca'@'localhost' identified by 'vtcacademy';
 grant all on HighLand.* to 'vtca'@'localhost';
 
 insert into Staffs(user_account, user_password, staff_name, staff_phone, staff_age, role) values
-	('staff01', 'e19d5cd5af0378da05f63f891c7467af', 'quan', 0377892812, 21, 1),
-    ('staff02', '7733be61632fa6af88d31218e6c4afb2', 'kien', 0362067555, 21, 1),
-    ('staff03', '69367521abb4d7383ab9a58bdc53ea1d', 'luan', 0867963364, 21, 1),
-    ('staff04', '61d539d16090b7b9db7458f827429830', 'hung', 0366422865, 21, 1);
+	('staff01', 'e19d5cd5af0378da05f63f891c7467af', 'Quân', 0377892812, 21, 1),
+    ('staff02', '7733be61632fa6af88d31218e6c4afb2', 'Kiên', 0362067555, 21, 1),
+    ('staff03', '69367521abb4d7383ab9a58bdc53ea1d', 'Luân', 0867963364, 21, 1),
+    ('staff04', '61d539d16090b7b9db7458f827429830', 'Hùng', 0366422865, 21, 1);
     -- abcd1234,abcd2345,abcd3456,abcd4567
 
 create table Cards(
 	card_id int auto_increment primary key,
-    stat int
+    stat bool
 );
 create table Orders(
 	order_id int auto_increment primary key,
-    order_date datetime,
-    stat int,
-    total_price float,
+    order_date datetime default now() not null,
+    stat bool,
     staff_id int,
     card_id int, 
     
@@ -48,7 +47,7 @@ create table Orders(
 );
 
 create table Drinks(
-	drink_id int auto_increment primary key,
+	drink_id int auto_increment primary key not null,
     drink_name nvarchar(200) not null,
     is_active bool
 );
@@ -73,11 +72,11 @@ create table Drink_Sizes(
 );
 
 create table Order_details(
-	order_id int,
-    drink_id int,
-    size_id int,
-    quantity int,
-    primary key (order_id,size_id,drink_id),
+	order_id int not null,
+    drink_id int not null,
+    size_id int not null,
+    quantity int not null,
+    primary key(order_id, drink_id, size_id),
     constraint fk_Orderdetails_Orders
     foreign key (order_id)
     references Orders(order_id),
@@ -145,37 +144,26 @@ insert into Drink_Sizes(drink_id,size_id,price) values
 
 insert into Cards(stat) values
 	(0),(0),(0),(0),(0),(0),(0),(0),(0),(0),(0),(0),(0),(0),(0),(0),(0),(0),(0),(0);
-select * from drinks;
-select * from drink_sizes;
-select * from Cards;
-select * from Staffs;
 
-select * from drinks where drink_id = 1;
+-- select * from Orders;
+-- select * from Order_details;
+-- select * from Staffs;
+-- select * from Drink_sizes;
+-- select * from Cards;
+-- select LAST_INSERT_ID() as order_id;
+-- select staff_name from Staffs where staff_id = 1;
 
-select sizes.size_id, size_name, price 
-from drink_sizes inner join sizes on drink_sizes.size_id = sizes.size_id 
-where drink_id = 18;
+-- select order_id, d.drink_id, d.drink_name, s.size_id, s.size_name, quantity, ds.price from Order_details od
+-- inner join Drinks d on d.drink_id = od.drink_id
+-- inner join Sizes s on s.size_id = od.size_id
+-- inner join Drink_Sizes ds on  ds.drink_id = od.drink_id and ds.size_id = od.size_id
+-- where order_id = 1;
 
-select drink_id, drink_name from drinks where is_active = true and drink_id = 1;
+-- update cards 
+-- set stat = true;
 
-select d.drink_id, d.drink_name, s.size_id, s.size_name, ds.price 
-from drinks d inner join drink_sizes ds 
-on d.drink_id = ds.drink_id 
-inner join sizes s 
-on s.size_id = ds.size_id
-where d.drink_id = 1 and is_active = true;
 
-select sizes.size_id, size_name, price 
-from drink_sizes inner join sizes 
-on drink_sizes.size_id = sizes.size_id 
-where drink_id = 1;
 
-select drink_id, drink_name, is_active 
-from drinks
-where drink_id = 1 
-and is_active = true;
 
-select sizes.size_id, size_name, price 
-from drink_sizes inner join sizes 
-on drink_sizes.size_id = sizes.size_id 
-where drink_id= 1;
+
+
