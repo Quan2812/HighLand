@@ -1,0 +1,6 @@
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHighLand\DAL.Test\bin\Debug\net5.0\CoverletSourceRootsMapping
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHighLand\DAL.Test\obj\Debug\net5.0\DAL.Test.csproj.AssemblyReference.cache
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHighLand\DAL.Test\obj\Debug\net5.0\DAL.Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHighLand\DAL.Test\obj\Debug\net5.0\DAL.Test.AssemblyInfoInputs.cache
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHighLand\DAL.Test\obj\Debug\net5.0\DAL.Test.AssemblyInfo.cs
+C:\Users\Quan\OneDrive\Máy tính\C#\ProjectHighLand\DAL.Test\obj\Debug\net5.0\DAL.Test.csproj.CoreCompileInputs.cache

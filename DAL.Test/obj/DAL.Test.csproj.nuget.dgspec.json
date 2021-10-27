@@ -1,30 +1,38 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHightLand\\DAL.Test\\DAL.Test.csproj": {}
+    "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\DAL.Test\\DAL.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHightLand\\DAL.Test\\DAL.Test.csproj": {
+    "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\DAL.Test\\DAL.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHightLand\\DAL.Test\\DAL.Test.csproj",
+        "projectUniqueName": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\DAL.Test\\DAL.Test.csproj",
         "projectName": "DAL.Test",
-        "projectPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHightLand\\DAL.Test\\DAL.Test.csproj",
+        "projectPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\DAL.Test\\DAL.Test.csproj",
         "packagesPath": "C:\\Users\\Quan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHightLand\\DAL.Test\\obj\\",
+        "outputPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\DAL.Test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Quan\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "net5.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
-            "projectReferences": {}
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\DAL\\DAL.csproj"
+              },
+              "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\Persistance\\Persistance.csproj": {
+                "projectPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\Persistance\\Persistance.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -34,23 +42,18 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.5.0, )"
             },
             "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[1.2.0, )"
-            },
-            "xunit": {
-              "target": "Package",
-              "version": "[2.4.0, )"
-            },
-            "xunit.runner.visualstudio": {
-              "target": "Package",
-              "version": "[2.4.0, )"
+              "version": "[3.0.2, )"
             }
           },
           "imports": [
@@ -68,7 +71,121 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\DAL\\DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\DAL\\DAL.csproj",
+        "projectName": "DAL",
+        "projectPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\DAL\\DAL.csproj",
+        "packagesPath": "C:\\Users\\Quan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Quan\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\Persistance\\Persistance.csproj": {
+                "projectPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\Persistance\\Persistance.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.26, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\Persistance\\Persistance.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\Persistance\\Persistance.csproj",
+        "projectName": "Persistance",
+        "projectPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\Persistance\\Persistance.csproj",
+        "packagesPath": "C:\\Users\\Quan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Quan\\OneDrive\\Máy tính\\C#\\ProjectHighLand\\Persistance\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Quan\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

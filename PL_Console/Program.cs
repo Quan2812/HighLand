@@ -18,6 +18,7 @@ namespace ConsoleApp
             do
             {
                 Console.Clear();
+                Header();
                 Console.WriteLine("----------LOGIN----------");
                 Console.WriteLine("=========================");
                 Console.Write("User Name: ");
@@ -63,7 +64,7 @@ namespace ConsoleApp
         }
         static int InputChoice()
         {
-            Console.Write("Chọn: ");
+            Console.Write("Your choice: ");
             int choice = Convert.ToInt32(Console.ReadLine());
             return choice;
         }
@@ -165,6 +166,7 @@ namespace ConsoleApp
             do
             {
                 Console.Clear();
+                Header();
                 Console.WriteLine("+===============================+");
                 Console.WriteLine("|----------HIGHLAND COFFE-------|");
                 Console.WriteLine("+-------------------------------+");
@@ -196,6 +198,7 @@ namespace ConsoleApp
             do
             {
                 Console.Clear();
+                Header();
                 Console.WriteLine("+===============================+");
                 Console.WriteLine("|       Create New Order        |");
                 Console.WriteLine("+-------------------------------+");
@@ -223,12 +226,13 @@ namespace ConsoleApp
                             DrinkBL drinkBL = new DrinkBL();
                             List<Drink> listdrinks = drinkBL.GetDrinks();
                             var table = new ConsoleTable("ID", "DRINK");
-                            foreach (Drink drink in listdrinks)
-                            {
-                                // Console.Write(drink.DrinkId + " " + drink.DrinkName + " ");
-                                table.AddRow(drink.DrinkId, drink.DrinkName);
-                            }
-                            table.Write(Format.Alternative);
+                            ShowAllDrink(listdrinks);
+                            // foreach (Drink drink in listdrinks)
+                            // {
+                            //     // Console.Write(drink.DrinkId + " " + drink.DrinkName + " ");
+                            //     table.AddRow(drink.DrinkId, drink.DrinkName);
+                            // }
+                            // table.Write(Format.Alternative);
                             do
                             {
                                 Console.Write("Enter ID Drink: ");
@@ -322,23 +326,10 @@ namespace ConsoleApp
                             CardBL cardBL = new CardBL();
                             if (listorders.Count == 0)
                             {
-                              cardBL.UpdateAllCards();  
+                                cardBL.UpdateAllCards();
                             }
                             List<Card> listcards = cardBL.GetAllCard();
-                            var table1 = new ConsoleTable("Card number", "Status");
-                            foreach (Card card in listcards)
-                            {
-                                // Console.Write(card.CardId + "  ");
-                                if (card.Stat == 0)
-                                {
-                                    table1.AddRow(card.CardId, "Non Active");
-                                }
-                                else
-                                {
-                                    table1.AddRow(card.CardId, "Is Active");
-                                }
-                            }
-                            table1.Write(Format.Alternative);
+                            ShowAllCard(listcards);
                             Console.Write("Please enter your card number: ");
                             int cardId = Convert.ToInt32(Console.ReadLine());
                             if (CheckCardById(listcards, cardId) == true)
@@ -361,10 +352,12 @@ namespace ConsoleApp
                             if (CheckCardById(listcards, cardId) == false)
                             {
                                 Console.WriteLine("Card is in use");
+                                Pause();
                             }
                             if ((cardId >= 23) || (cardId < 1))
                             {
                                 Console.WriteLine("Card does not exist");
+                                Pause();
                             }
                         }
                         Pause();
@@ -384,6 +377,7 @@ namespace ConsoleApp
             do
             {
                 Console.Clear();
+                Header();
                 Console.WriteLine("+===============================+");
                 Console.WriteLine("|          Order List           |");
                 Console.WriteLine("+-------------------------------+");
@@ -426,8 +420,13 @@ namespace ConsoleApp
                             table.Write(Format.Alternative);
                             do
                             {
-                                Console.Write("Please enter your Order's Id code: ");
+                                Console.WriteLine("Please enter 0 to exit");
+                                Console.Write("Please enter your Order's Id code if you want Update: ");
                                 int orderId = Convert.ToInt32(Console.ReadLine());
+                                if (orderId == 0)
+                                {
+                                    check = 0;
+                                }
                                 foreach (Order order in listorders)
                                 {
                                     if (orderId == order.OrderId && order.Status == true)
@@ -506,6 +505,166 @@ namespace ConsoleApp
             //         table.Write();
             //     }
             // } while (cash < total);
+        }
+
+        static void Header()
+        {
+            Console.WriteLine("+------------------------------------------------+");
+            Console.WriteLine("|                 HIGHLAND COFFEE                |");
+            Console.WriteLine("|     Version 4.0.9 Design by Bui Hong Quan      |");
+            Console.WriteLine("+================================================+");
+        }
+
+        static void ShowAllDrink(List<Drink> listdrinks)
+        {
+            // foreach (Drink drink in listdrinks)
+            // {
+            //     Console.Write("|ID:{0,4}|", drink.DrinkId);
+            //     Console.WriteLine("Drink:{0,20}|", drink.DrinkName);
+            // }
+            int choice = -1;
+            Console.WriteLine("+=========================+");
+            Console.WriteLine("| ID |      DrinkName     |");
+            Console.WriteLine("+=========================+");
+            for (int i = 0; i <= 9; i++)
+            {
+                Console.Write("|{0,4}|", listdrinks[i].DrinkId);
+                Console.WriteLine("{0,20}|", listdrinks[i].DrinkName);
+                Console.WriteLine("|-------------------------|");
+            }
+            Console.WriteLine("Trang 1/3");
+            do
+            {
+                Console.WriteLine("Ấn 0 để chọn đồ uống");
+                Console.Write("Mời bạn nhập số trang muốn xem: ");
+                choice = Convert.ToInt32(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        Console.Clear();
+                        Console.WriteLine("+=========================+");
+                        Console.WriteLine("| ID |      DrinkName     |");
+                        Console.WriteLine("+=========================+");
+                        for (int i = 0; i <= 9; i++)
+                        {
+                            Console.Write("|{0,4}|", listdrinks[i].DrinkId);
+                            Console.WriteLine("{0,20}|", listdrinks[i].DrinkName);
+                            Console.WriteLine("|-------------------------|");
+                        }
+                        Console.WriteLine("Trang 1/3");
+                        break;
+                    case 2:
+                        Console.Clear();
+                        Console.WriteLine("+=========================+");
+                        Console.WriteLine("| ID |      DrinkName     |");
+                        Console.WriteLine("+=========================+");
+                        for (int i = 10; i <= 20; i++)
+                        {
+                            Console.Write("|{0,4}|", listdrinks[i].DrinkId);
+                            Console.WriteLine("{0,20}|", listdrinks[i].DrinkName);
+                            Console.WriteLine("|-------------------------|");
+                        }
+                        Console.WriteLine("Trang 2/3");
+                        break;
+                    case 3:
+                        Console.Clear();
+                        Console.WriteLine("+=========================+");
+                        Console.WriteLine("| ID |      DrinkName     |");
+                        Console.WriteLine("+=========================+");
+                        for (int i = 20; i < listdrinks.Count; i++)
+                        {
+                            Console.Write("|{0,4}|", listdrinks[i].DrinkId);
+                            Console.WriteLine("{0,20}|", listdrinks[i].DrinkName);
+                            Console.WriteLine("|-------------------------|");
+                        }
+                        Console.WriteLine("Trang 3/3");
+                        break;
+                    default:
+                        break;
+                }
+            } while (choice != 0);
+        }
+
+        static void ShowAllCard(List<Card> listcards)
+        {
+            int choice = -1;
+            Console.Clear();
+            Console.WriteLine("+=========================+");
+            Console.WriteLine("| ID |        Status      |");
+            Console.WriteLine("+=========================+");
+            for (int i = 0; i <= 9; i++)
+            {
+                if (listcards[i].Stat == 0)
+                {
+                    Console.Write("|{0,4}|", listcards[i].CardId);
+                    Console.WriteLine("Non Active          |");
+                    Console.WriteLine("|-------------------------|");
+                }
+                else
+                {
+                    Console.Write("|{0,4}|", listcards[i].CardId);
+                    Console.WriteLine("Is Active           |");
+                    Console.WriteLine("|-------------------------|");
+                }
+            }
+            Console.WriteLine("Trang 1/2");
+            do
+            {
+                Console.WriteLine("Ấn 0 để chọn thẻ");
+                Console.Write("Mời bạn nhập số trang muốn xem: ");
+                choice = Convert.ToInt32(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        Console.Clear();
+                        Console.WriteLine("+=========================+");
+                        Console.WriteLine("| ID |        Status      |");
+                        Console.WriteLine("+=========================+");
+                        for (int i = 0; i <= 9; i++)
+                        {
+                            // Console.Write(card.CardId + "  ");
+                            if (listcards[i].Stat == 0)
+                            {
+                                Console.Write("|{0,4}|", listcards[i].CardId);
+                                Console.WriteLine("Non Active          |");
+                                Console.WriteLine("|-------------------------|");
+                            }
+                            else
+                            {
+                                Console.Write("|{0,4}|", listcards[i].CardId);
+                                Console.WriteLine("Is Active           |");
+                                Console.WriteLine("|-------------------------|");
+                            }
+                        }
+                        Console.WriteLine("Trang 1/2");
+                        break;
+                    case 2:
+                        Console.Clear();
+                        Console.WriteLine("+=========================+");
+                        Console.WriteLine("| ID |        Status      |");
+                        Console.WriteLine("+=========================+");
+                        for (int i = 10; i < 20; i++)
+                        {
+                            // Console.Write(card.CardId + "  ");
+                            if (listcards[i].Stat == 0)
+                            {
+                                Console.Write("|{0,4}|", listcards[i].CardId);
+                                Console.WriteLine("Non Active          |");
+                                Console.WriteLine("|-------------------------|");
+                            }
+                            else
+                            {
+                                Console.Write("|{0,4}|", listcards[i].CardId);
+                                Console.WriteLine("Is Active            |");
+                                Console.WriteLine("|-------------------------|");
+                            }
+                        }
+                        Console.WriteLine("Trang 2/2");
+                        break;
+                    default:
+                        break;
+                }
+            } while (choice != 0);
         }
     }
 }
