@@ -532,11 +532,11 @@ namespace ConsoleApp
                 Console.WriteLine("{0,20}|", listdrinks[i].DrinkName);
                 Console.WriteLine("|-------------------------|");
             }
-            Console.WriteLine("Trang 1/3");
+            Console.WriteLine("Page 1/3");
             do
             {
-                Console.WriteLine("Ấn 0 để chọn đồ uống");
-                Console.Write("Mời bạn nhập số trang muốn xem: ");
+                Console.WriteLine("Press 0 to choose a drink");
+                Console.Write("Please enter the number of Pages you want to see: ");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -551,7 +551,7 @@ namespace ConsoleApp
                             Console.WriteLine("{0,20}|", listdrinks[i].DrinkName);
                             Console.WriteLine("|-------------------------|");
                         }
-                        Console.WriteLine("Trang 1/3");
+                        Console.WriteLine("Page 1/3");
                         break;
                     case 2:
                         Console.Clear();
@@ -564,7 +564,7 @@ namespace ConsoleApp
                             Console.WriteLine("{0,20}|", listdrinks[i].DrinkName);
                             Console.WriteLine("|-------------------------|");
                         }
-                        Console.WriteLine("Trang 2/3");
+                        Console.WriteLine("Page 2/3");
                         break;
                     case 3:
                         Console.Clear();
@@ -577,7 +577,7 @@ namespace ConsoleApp
                             Console.WriteLine("{0,20}|", listdrinks[i].DrinkName);
                             Console.WriteLine("|-------------------------|");
                         }
-                        Console.WriteLine("Trang 3/3");
+                        Console.WriteLine("Page 3/3");
                         break;
                     default:
                         break;
@@ -607,11 +607,11 @@ namespace ConsoleApp
                     Console.WriteLine("|-------------------------|");
                 }
             }
-            Console.WriteLine("Trang 1/2");
+            Console.WriteLine("Page 1/2");
             do
             {
-                Console.WriteLine("Ấn 0 để chọn thẻ");
-                Console.Write("Mời bạn nhập số trang muốn xem: ");
+                Console.WriteLine("Press 0 to choose a card");
+                Console.Write("Please enter the number of Pages you want to see: ");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -636,7 +636,7 @@ namespace ConsoleApp
                                 Console.WriteLine("|-------------------------|");
                             }
                         }
-                        Console.WriteLine("Trang 1/2");
+                        Console.WriteLine("Page 1/2");
                         break;
                     case 2:
                         Console.Clear();
@@ -659,7 +659,7 @@ namespace ConsoleApp
                                 Console.WriteLine("|-------------------------|");
                             }
                         }
-                        Console.WriteLine("Trang 2/2");
+                        Console.WriteLine("Page 2/2");
                         break;
                     default:
                         break;
